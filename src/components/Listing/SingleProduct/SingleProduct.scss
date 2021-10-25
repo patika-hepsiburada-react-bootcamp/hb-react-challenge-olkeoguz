@@ -31,9 +31,12 @@
     -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
     margin: 9px 0px 10px 0px;
+    height: 32px;
   }
 
   .product-body {
+    display: flex;
+    flex-direction: column;
     .color,
     .brand {
       span {
@@ -71,5 +74,19 @@
     bottom: 0px;
     left: 0;
     width: 100%;
+  }
+}
+
+@media (max-width: 512px) {
+  .single-product {
+    .product-cart-btn {
+      position: relative;
+    }
+    &:hover {
+      .product-body,
+      .product-cart-btn {
+        display: block;
+      }
+    }
   }
 }
