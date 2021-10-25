@@ -1,11 +1,17 @@
-import React from 'react'
+import { useProducts } from '../../../contexts/ProductContext';
+import SingleProduct from '../SingleProduct/SingleProduct';
+import './Products.scss';
 
 const Products = () => {
-    return (
-        <div>
-            Products
-        </div>
-    )
-}
+  const { products } = useProducts();
+  console.log(products);
+  return (
+    <div className='products-container'>
+      {products.map((prod) => (
+        <SingleProduct key={prod.id} product={prod} />
+      ))}
+    </div>
+  );
+};
 
-export default Products
+export default Products;
