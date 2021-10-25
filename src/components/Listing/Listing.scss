@@ -2,12 +2,12 @@
     padding:17px 78px 0px 81px;
 
     .body {
-        padding-top:15px;
+        padding:15px 0px;
         display:grid;
         grid-template-columns: 1fr 5fr;
         gap:6px;
 
-        @media (max-width: 768px) {
+        @media (max-width: 512px) {
             grid-template-columns: 1fr;
         }
     }

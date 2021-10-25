@@ -5,6 +5,11 @@
   position: relative;
 
   &:hover {
+    border: 1px solid var(--gray-secondary);
+
+    .image-container{
+      border:none;
+    }
     .product-body {
       display: none;
     }
