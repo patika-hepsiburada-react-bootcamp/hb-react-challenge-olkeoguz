@@ -1,6 +1,4 @@
 .single-product {
-  padding: 3px 15px;
-  border: 1px solid var(--gray-secondary);
   border-radius: 8px;
   font-size: 12px;
   line-height: 18px;
@@ -17,6 +15,10 @@
   }
 
   .image-container {
+    border: 1px solid var(--gray-secondary);
+    padding: 3px 15px;
+    border-radius: 8px;
+
     img {
       width: 100%;
       height: 100%;
@@ -32,11 +34,13 @@
     -webkit-box-orient: vertical;
     margin: 9px 0px 10px 0px;
     height: 32px;
+    padding: 0px 18px;
   }
 
   .product-body {
     display: flex;
     flex-direction: column;
+    padding: 0px 18px;
     .color,
     .brand {
       span {
@@ -74,6 +78,7 @@
     bottom: 0px;
     left: 0;
     width: 100%;
+    animation: animatebtn 1s;
   }
 }
 
@@ -88,5 +93,14 @@
         display: block;
       }
     }
+  }
+}
+
+@keyframes animatebtn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

@@ -3,6 +3,10 @@ import './SingleProduct.scss';
 
 const SingleProduct = ({ product }) => {
   console.log(product);
+
+  const clickHandler = () => {
+      console.log("clicked");
+  }
   return (
     <div className='single-product'>
       <div className='image-container'>
@@ -27,7 +31,7 @@ const SingleProduct = ({ product }) => {
         </div>
       </div>
       <div className='product-cart-btn'>
-        <Button text='Sepete ekle' />
+        <Button text='Sepete ekle' type="secondary" click={clickHandler} />
       </div>
     </div>
   );

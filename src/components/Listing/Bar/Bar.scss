@@ -11,11 +11,50 @@
 
     .searched-word {
       color: var(--light-gray);
-      font-size:15px;
+      font-size: 15px;
       span {
-          color:var(--primary-color);
-          font-weight: 600;
+        color: var(--primary-color);
+        font-weight: 600;
       }
     }
+  }
+
+  .sorting {
+    position: relative;
+    &:hover {
+      .sorting-options {
+        display: flex;
+      }
+    }
+    .sorting-options {
+      display: flex;
+      flex-direction: column;
+      color: White;
+      background-color: black;
+      display: none;
+      position: absolute;
+      padding: 8px 16px;
+      width: 180px;
+      z-index: 100;
+      animation: animateSorting 0.4s;
+
+      span {
+        padding:4px 8px;
+        margin-bottom: 4px;
+        &:hover {
+          cursor: pointer;
+          background-color: #4169e1;
+        }
+      }
+    }
+  }
+}
+
+@keyframes animateSorting {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
