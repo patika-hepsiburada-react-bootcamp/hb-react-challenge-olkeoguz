@@ -2,6 +2,11 @@
   display: flex;
   justify-content: space-between;
 
+  @media (max-width: 512px) {
+    flex-wrap: wrap;
+    justify-content:center;
+  }
+
   .searched-item-container {
     .title {
       font-weight: 700;

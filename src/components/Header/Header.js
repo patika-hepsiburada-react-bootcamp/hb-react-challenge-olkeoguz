@@ -17,7 +17,6 @@ const Header = () => {
         />
       </div>
       <div className='cart-container'>
-        {/* <button>Sepetim</button> */}
         <Button text="Sepetim"/>
         <span className="quantity">3</span>
       </div>
