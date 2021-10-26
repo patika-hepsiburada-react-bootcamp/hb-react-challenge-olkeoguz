@@ -10,7 +10,7 @@ const Button = ({ text, iconSrc, type, click }) => {
       }`}
     >
       <span>{text}</span>
-      {iconSrc && <img src={iconSrc} alt='' />}
+      {iconSrc && <img src={iconSrc} alt='arrow-down' />}
     </button>
   );
 };

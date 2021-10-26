@@ -4,7 +4,7 @@
 
   @media (max-width: 512px) {
     flex-wrap: wrap;
-    justify-content:center;
+    justify-content: center;
   }
 
   .searched-item-container {
@@ -17,6 +17,7 @@
     .searched-word {
       color: var(--light-gray);
       font-size: 15px;
+
       span {
         color: var(--primary-color);
         font-weight: 600;
@@ -44,7 +45,7 @@
       animation: animateSorting 0.4s;
 
       span {
-        padding:4px 8px;
+        padding: 4px 8px;
         margin-bottom: 4px;
         &:hover {
           cursor: pointer;

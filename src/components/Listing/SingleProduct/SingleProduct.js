@@ -25,7 +25,7 @@ const SingleProduct = ({ product }) => {
         <p className='new-price'>{product.price} TL</p>
         <div className='old-price'>
           <span>
-            {product.price + product.price / (product.discount || 20)} TL
+            {product.price + product.price / (100 / (product.discount || 20))} TL
           </span>
           <span>{product.discount}%</span>
         </div>

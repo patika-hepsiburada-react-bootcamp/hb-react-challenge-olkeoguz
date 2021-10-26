@@ -6,9 +6,9 @@ import './Bar.scss';
 const Bar = () => {
   return (
     <div className='bar'>
-      <div className='searched-item-container'>
+      <div className="searched-item-container">
         <p className='title'>iPhone iOS cep telefonu</p>
-        <p className='searched-word'>
+        <p className="searched-word">
           Aranan Kelime: <span>iphone 11</span>
         </p>
       </div>

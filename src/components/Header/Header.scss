@@ -41,6 +41,7 @@ header {
       &:focus {
         border: none;
         outline: none;
+        color:var(--primary-color);
       }
     }
   }

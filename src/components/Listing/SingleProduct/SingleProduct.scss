@@ -7,8 +7,11 @@
   &:hover {
     border: 1px solid var(--gray-secondary);
 
-    .image-container{
-      border:none;
+    .image-container {
+      border: none;
+      img {
+        transform: scale(1.05);
+      }
     }
     .product-body {
       display: none;
@@ -26,8 +29,10 @@
 
     img {
       width: 100%;
-      height: 100%;
       object-fit: contain;
+      display: block;
+      height:276px;
+      transition: transform 0.3s ease-in;
     }
   }
 
