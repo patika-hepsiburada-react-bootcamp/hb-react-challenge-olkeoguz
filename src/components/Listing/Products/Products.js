@@ -12,7 +12,7 @@ function useQuery() {
 
 const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [numPerPage] = useState(2);
+  const [numPerPage] = useState(12);
   const { products } = useProducts();
 
   const history = useHistory();
@@ -36,7 +36,7 @@ const Products = () => {
     history.push(`/?page=${pageNumber}`);
   };
   return (
-    <>
+    <div className="products-main">
       <div className='products-container'>
         {currentResults.map((prod) => (
           <SingleProduct key={prod.id} product={prod} />
@@ -48,7 +48,7 @@ const Products = () => {
         paginate={paginate}
         currentPage={currentPage}
       />
-    </>
+    </div>
   );
 };
 

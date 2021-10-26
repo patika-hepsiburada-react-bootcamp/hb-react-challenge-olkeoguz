@@ -11,7 +11,7 @@ const Pagination = ({ numPerPage, totalNum, paginate, currentPage }) => {
   return (
     <div className='pagination'>
       {currentPage !== 1 && (
-        <button onClick={() => paginate(currentPage - 1)}>Previous</button>
+        <span className="arrow" onClick={() => paginate(currentPage - 1)}>{"<"}</span>
       )}
       <PageNumbers
         numPerPage={numPerPage}
@@ -21,7 +21,7 @@ const Pagination = ({ numPerPage, totalNum, paginate, currentPage }) => {
         pageNumbers={pageNumbers}
       />
       {currentPage !== Math.floor(totalNum / numPerPage + 1) && (
-        <button onClick={() => paginate(currentPage + 1)}>Next</button>
+        <span className="arrow" onClick={() => paginate(currentPage + 1)}>{">"}</span>
       )}
     </div>
   );
