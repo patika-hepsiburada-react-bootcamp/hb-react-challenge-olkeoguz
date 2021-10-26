@@ -17,6 +17,10 @@
     align-items: center;
     margin-right: 4px;
     cursor: pointer;
+    transition: all 0.1s ease-out;
+    &:hover {
+      border: 1px solid var(--hb-orange);
+    }
   }
 
   .arrow:first-child {
@@ -32,8 +36,10 @@
     justify-content: center;
 
     .active {
-      .pageLink{
-        border: 1px solid var(--hb-orange);
+      .pageLink {
+        background: var(--hb-orange);
+        border: 1px solid transparent;
+        color: white;
       }
     }
   }

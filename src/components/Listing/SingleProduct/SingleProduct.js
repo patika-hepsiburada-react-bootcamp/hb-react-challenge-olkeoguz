@@ -2,8 +2,6 @@ import Button from '../../UI/Button/Button';
 import './SingleProduct.scss';
 
 const SingleProduct = ({ product }) => {
-  console.log(product);
-
   const clickHandler = () => {
       console.log("clicked");
   }
@@ -25,7 +23,7 @@ const SingleProduct = ({ product }) => {
         <p className='new-price'>{product.price} TL</p>
         <div className='old-price'>
           <span>
-            {product.price + product.price / (100 / (product.discount || 20))} TL
+            {(product.price + product.price / (100 / (product.discount || 20))).toFixed(0)} TL
           </span>
           <span>{product.discount}%</span>
         </div>

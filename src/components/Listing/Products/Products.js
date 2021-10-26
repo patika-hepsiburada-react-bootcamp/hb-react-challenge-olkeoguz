@@ -29,6 +29,7 @@ const Products = () => {
   const indexOfFirstResult = indexOfLastResult - numPerPage;
   const currentResults = products.slice(indexOfFirstResult, indexOfLastResult);
 
+
   const totalNum = products.length;
 
   const paginate = (pageNumber) => {

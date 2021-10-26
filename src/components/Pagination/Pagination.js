@@ -3,7 +3,8 @@ import './pagination.scss';
 
 const Pagination = ({ numPerPage, totalNum, paginate, currentPage }) => {
   const pageNumbers = [];
-
+console.log(Math.ceil(totalNum / numPerPage));
+  
   for (let i = 1; i <= Math.ceil(totalNum / numPerPage); i++) {
     pageNumbers.push(i);
   }
@@ -11,7 +12,9 @@ const Pagination = ({ numPerPage, totalNum, paginate, currentPage }) => {
   return (
     <div className='pagination'>
       {currentPage !== 1 && (
-        <span className="arrow" onClick={() => paginate(currentPage - 1)}>{"<"}</span>
+        <span className='arrow' onClick={() => paginate(currentPage - 1)}>
+          {'<'}
+        </span>
       )}
       <PageNumbers
         numPerPage={numPerPage}
@@ -20,8 +23,10 @@ const Pagination = ({ numPerPage, totalNum, paginate, currentPage }) => {
         currentPage={currentPage}
         pageNumbers={pageNumbers}
       />
-      {currentPage !== Math.floor(totalNum / numPerPage + 1) && (
-        <span className="arrow" onClick={() => paginate(currentPage + 1)}>{">"}</span>
+      {currentPage <= Math.floor(totalNum / (numPerPage + 1)) && (
+        <span className='arrow' onClick={() => paginate(currentPage + 1)}>
+          {'>'}
+        </span>
       )}
     </div>
   );
