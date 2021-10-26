@@ -10,7 +10,7 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-const Products = () => {
+const Products = ({scrollToProductsRef}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [numPerPage] = useState(12);
   const { products } = useProducts();
@@ -35,6 +35,7 @@ const Products = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     history.push(`/?page=${pageNumber}`);
+    scrollToProductsRef.current.scrollIntoView({behavior: "smooth"});
   };
   return (
     <div className="products-main">

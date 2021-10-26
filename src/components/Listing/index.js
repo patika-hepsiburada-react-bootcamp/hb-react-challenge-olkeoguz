@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Bar from './Bar/Bar'
 import Filters from './Filters/Filters';
 import "./Listing.scss";
 import Products from './Products/Products';
 
 const index = () => {
+    const scrollToProductsRef = useRef();
     return (
-        <div className="listing-container">
+        <div ref={scrollToProductsRef} className="listing-container">
             <Bar />
             <div className="body">
                 <Filters/>
-                <Products/>
+                <Products scrollToProductsRef={scrollToProductsRef}/>
             </div>
         </div>
     )
