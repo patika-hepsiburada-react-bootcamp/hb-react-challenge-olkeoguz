@@ -16,7 +16,7 @@
   }
 
   &.with-icon {
-    // padding:12px 6px;
+    padding:12px 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,7 +24,6 @@
 
   &.secondary {
     color: var(--hb-orange);
-    background: rgba(255, 96, 0, 0.11);
     background: #FFF3EB;
     border-radius: 8px;
     border: 1px solid transparent;
@@ -32,6 +31,23 @@
 
     &:hover{
       background-color:rgba(255, 96, 0, 0.11);
+    }
+  }
+  &.danger {
+    color: var(--danger);
+    background: inherit;
+    border-radius: 8px !important;
+    border: 1px solid var(--danger);
+    padding: 5px 12px;
+    transition: all 0.2s ease-out;
+    font-size:10px;
+    line-height: 18px;
+    max-width: 47px;
+
+    &:hover{
+      background-color:var(--danger);
+      border: 1px solid white;
+      color:White;
     }
   }
 }

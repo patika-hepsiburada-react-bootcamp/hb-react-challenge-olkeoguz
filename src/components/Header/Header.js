@@ -2,6 +2,7 @@ import Logo from '../../assets/logo/Logo.svg';
 import Search from '../../assets/icons/Search.svg';
 import './Header.scss';
 import Button from '../UI/Button/Button';
+import Cart from './Cart/Cart';
 
 const Header = () => {
   return (
@@ -17,8 +18,12 @@ const Header = () => {
         />
       </div>
       <div className='cart-container'>
-        <Button text="Sepetim"/>
-        <span className="quantity">3</span>
+        <Button text='Sepetim' />
+        <span className='quantity'>3</span>
+        <div className='white-line'></div>
+        <div className='cart'>
+          <Cart />
+        </div>
       </div>
     </header>
   );

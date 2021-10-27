@@ -7,7 +7,7 @@ const Button = ({ text, iconSrc, type, click }) => {
       onClick={click}
       className={`btn-container ${iconSrc && 'with-icon'} ${
         type && type === 'secondary' && 'secondary'
-      }`}
+      } ${type === 'danger' && 'danger'}`}
     >
       <span>{text}</span>
       {iconSrc && <img src={iconSrc} alt='arrow-down' />}
