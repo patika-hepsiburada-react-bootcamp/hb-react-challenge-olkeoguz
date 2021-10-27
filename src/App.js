@@ -12,11 +12,11 @@ function App() {
       <Route exact path='/'>
         <Header />
         <Listing />
-        <Backdrop />
         <Modal
           title='Ürünü silmek istediğinize emin misiniz?'
           text='Ürünü sepet listenizden kaldırmak istediğinizden emin misiniz? Dilerseniz ürünü sepetinizde tutup fiyatı düştüğünde haberdar olabilirsiniz.'
         />
+        <Backdrop />
       </Route>
     </Switch>
   );

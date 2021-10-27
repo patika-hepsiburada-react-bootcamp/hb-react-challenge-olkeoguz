@@ -1,8 +1,14 @@
 import React from 'react';
-import  './Backdrop.scss';
+import './Backdrop.scss';
 
-const Backdrop = ({ click }) => {
-  return <div onClick={click} className="backdrop"></div>;
+const Backdrop = ({ visible, toggle }) => {
+  return (
+    <>
+      {visible && (
+        <div onClick={() => toggle(false)} className='backdrop'></div>
+      )}
+    </>
+  );
 };
 
 export default Backdrop;

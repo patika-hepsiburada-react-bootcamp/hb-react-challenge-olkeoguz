@@ -6,6 +6,10 @@ export default CartContext;
 
 export const CartContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // product to be deleted
+  const [prodId, setProdId] = useState();
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
@@ -24,8 +28,16 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const removeFromCart = (prodId) => {
-    const updatedCartItems = cartItems.filter((item) => item.id !== prodId);
-    setCartItems(updatedCartItems);
+    setProdId(prodId);
+    setModalOpen(true);
+  };
+
+  const confirmRemoving = (isConfirmed) => {
+    if (isConfirmed) {
+      const updatedCartItems = cartItems.filter((item) => item.id !== prodId);
+      setCartItems(updatedCartItems);
+    }
+    setModalOpen(false);
   };
 
   const values = {
@@ -33,6 +45,9 @@ export const CartContextProvider = ({ children }) => {
     setCartItems,
     addToCart,
     removeFromCart,
+    modalOpen,
+    setModalOpen,
+    confirmRemoving,
   };
 
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
