@@ -21,7 +21,7 @@ const Header = () => {
       </div>
       <div className='cart-container'>
         <Button text='Sepetim' />
-        <span className='quantity'>{cartItems.length}</span>
+        <span className='quantity'>{cartItems.length || 0}</span>
         <div className='white-line'></div>
         <div className='cart'>
           <Cart />

@@ -4,16 +4,17 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { useProducts } from '../../../contexts/ProductContext';
 import SingleProduct from '../SingleProduct/SingleProduct';
 import Pagination from '../../Pagination/Pagination';
+import Loading from '../../UI/SkeletonLoading/Loading';
 import './Products.scss';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-const Products = ({scrollToProductsRef}) => {
+const Products = ({ scrollToProductsRef }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [numPerPage] = useState(12);
-  const { products } = useProducts();
+  const { products,loading } = useProducts();
 
   const history = useHistory();
   let query = useQuery();
@@ -29,17 +30,17 @@ const Products = ({scrollToProductsRef}) => {
   const indexOfFirstResult = indexOfLastResult - numPerPage;
   const currentResults = products.slice(indexOfFirstResult, indexOfLastResult);
 
-
   const totalNum = products.length;
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     history.push(`/?page=${pageNumber}`);
-    scrollToProductsRef.current.scrollIntoView({behavior: "smooth"});
+    scrollToProductsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
   return (
-    <div className="products-main">
+    <div className='products-main'>
       <div className='products-container'>
+        {loading && [...Array(12)].map((_, index) => <Loading key={index} />)}
         {currentResults.map((prod) => (
           <SingleProduct key={prod.id} product={prod} />
         ))}
