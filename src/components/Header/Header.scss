@@ -127,12 +127,16 @@ header {
         position: relative;
         min-width: 50px;
         width: 100%;
-        display: flex;
+        // display: flex;
+        // flex-direction: column;
+        display:none;
         border: none;
       }
       &:hover {
         .cart {
           display: block;
+          display: flex;
+          flex-direction: column;
         }
 
         .white-line {
