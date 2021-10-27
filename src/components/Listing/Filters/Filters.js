@@ -1,39 +1,51 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useProducts } from '../../../contexts/ProductContext';
 import Filter from './Filter/Filter';
 import './Filters.scss';
 import Sorting from './Sorting/Sorting';
 
-const brandsFilter = {
-  filterName: 'brands',
-  data: [
-    { name: 'Samsung', quantity: 3 },
-    { name: 'Nokia', quantity: 3 },
-    { name: 'Apple', quantity: 3 },
-    { name: 'LG', quantity: 3 },
-    { name: 'Huawei', quantity: 3 },
-    { name: 'Xiaomi', quantity: 3 },
-  ],
-};
-
-const colorsFilter = {
-  filterName: 'colors',
-  data: [
-    { name: 'Siyah', quantity: 3 },
-    { name: 'Kırmızı', quantity: 3 },
-    { name: 'Yeşil', quantity: 3 },
-    { name: 'Mavi', quantity: 3 },
-    { name: 'Beya', quantity: 3 },
-    { name: 'Gri', quantity: 3 },
-  ],
-};
-
 const Filters = () => {
+  const { products } = useProducts();
+
+  let colorsSet = {};
+  let brandsSet = {};
+
+  // This will return an object like {Yellow:2,Red:4,Black:5}
+  colorsSet = useMemo(() => {
+    products.forEach((product) => {
+      if (colorsSet[product.color]) {
+        colorsSet = {
+          ...colorsSet,
+          [product.color]: colorsSet[product.color] + 1,
+        };
+      } else {
+        colorsSet = { ...colorsSet, [product.color]: 1 };
+      }
+    });
+    return colorsSet;
+  }, [products]);
+
+  // This will return an object like {Apple:2,Samsung:4,Huawei:5}
+  brandsSet = useMemo(() => {
+    products.forEach((product) => {
+      if (brandsSet[product.brand]) {
+        brandsSet = {
+          ...brandsSet,
+          [product.brand]: brandsSet[product.brand] + 1,
+        };
+      } else {
+        brandsSet = { ...brandsSet, [product.brand]: 1 };
+      }
+    });
+    return brandsSet;
+  }, [products]);
+
   return (
     <div className='filters'>
-      <div className="sticky">
-        <Filter filter={colorsFilter} />
+      <div className='sticky'>
+        <Filter data={colorsSet} filterName='Tags' />
         <Sorting />
-        <Filter filter={brandsFilter} />
+        <Filter data={brandsSet} filterName='Brands' />
       </div>
     </div>
   );
