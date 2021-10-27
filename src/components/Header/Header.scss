@@ -84,8 +84,7 @@ header {
       width: 100%;
       right: 0;
       display: none;
-      max-height: 400px;
-      overflow-y: auto;
+      animation: animateCart 0.6s;
     }
 
     &:hover {
@@ -125,30 +124,36 @@ header {
         right: 15px;
       }
       .cart {
-        position:relative;
-        min-width:50px;
+        position: relative;
+        min-width: 50px;
         width: 100%;
         display: flex;
-        max-height: 200px;
-        overflow-y: auto;
-        border:none;
+        border: none;
       }
       &:hover {
         .cart {
           display: block;
         }
-  
+
         .white-line {
           display: none;
         }
-  
+
         button {
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
           transition: all 0.2s ease-out;
-          
         }
       }
     }
+  }
+}
+
+@keyframes animateCart {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
