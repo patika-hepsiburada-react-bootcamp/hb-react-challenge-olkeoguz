@@ -84,6 +84,8 @@ header {
       width: 100%;
       right: 0;
       display: none;
+      max-height: 400px;
+      overflow-y: auto;
     }
 
     &:hover {
@@ -101,7 +103,6 @@ header {
         transition: all 0.2s ease-out;
       }
     }
-    
   }
 
   @media (max-width: 512px) {
@@ -116,6 +117,38 @@ header {
     .cart-container {
       padding: 0px 20px;
       width: 100%;
+      .quantity {
+        width: 9px;
+        height: 9px;
+        position: absolute;
+        top: -5px;
+        right: 15px;
+      }
+      .cart {
+        position:relative;
+        min-width:50px;
+        width: 100%;
+        display: flex;
+        max-height: 200px;
+        overflow-y: auto;
+        border:none;
+      }
+      &:hover {
+        .cart {
+          display: block;
+        }
+  
+        .white-line {
+          display: none;
+        }
+  
+        button {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          transition: all 0.2s ease-out;
+          
+        }
+      }
     }
   }
 }

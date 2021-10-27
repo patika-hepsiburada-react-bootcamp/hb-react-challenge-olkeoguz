@@ -1,10 +1,18 @@
+import { useMemo } from 'react';
+import { useCart } from '../../../contexts/CartContext';
 import Button from '../../UI/Button/Button';
 import './SingleProduct.scss';
 
 const SingleProduct = ({ product }) => {
+  const { addToCart, cartItems } = useCart();
   const clickHandler = () => {
-      console.log("clicked");
-  }
+    addToCart(product);
+  };
+
+  const itemIsInCart = useMemo(
+    () => cartItems.some((item) => item.id === product.id),
+    [cartItems]
+  );
   return (
     <div className='single-product'>
       <div className='image-container'>
@@ -23,13 +31,17 @@ const SingleProduct = ({ product }) => {
         <p className='new-price'>{product.price} TL</p>
         <div className='old-price'>
           <span>
-            {(product.price + product.price / (100 / (product.discount || 20))).toFixed(0)} TL
+            {(
+              product.price +
+              product.price / (100 / (product.discount || 20))
+            ).toFixed(0)}{' '}
+            TL
           </span>
           <span>{product.discount}%</span>
         </div>
       </div>
       <div className='product-cart-btn'>
-        <Button text='Sepete ekle' type="secondary" click={clickHandler} />
+        <Button disabled={itemIsInCart} text='Sepete ekle' type='secondary' click={clickHandler} />
       </div>
     </div>
   );

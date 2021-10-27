@@ -3,8 +3,10 @@ import Search from '../../assets/icons/Search.svg';
 import './Header.scss';
 import Button from '../UI/Button/Button';
 import Cart from './Cart/Cart';
+import { useCart } from '../../contexts/CartContext';
 
 const Header = () => {
+  const {cartItems} = useCart();
   return (
     <header>
       <div className='logo-container'>
@@ -19,7 +21,7 @@ const Header = () => {
       </div>
       <div className='cart-container'>
         <Button text='Sepetim' />
-        <span className='quantity'>3</span>
+        <span className='quantity'>{cartItems.length}</span>
         <div className='white-line'></div>
         <div className='cart'>
           <Cart />
