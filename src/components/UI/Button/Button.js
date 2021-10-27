@@ -2,7 +2,6 @@ import React from 'react';
 import './Button.scss';
 
 const Button = ({ text, iconSrc, type, click, disabled }) => {
-  console.log(disabled);
   return (
     <button
       onClick={click}
