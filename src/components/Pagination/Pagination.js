@@ -3,7 +3,6 @@ import './pagination.scss';
 
 const Pagination = ({ numPerPage, totalNum, paginate, currentPage }) => {
   const pageNumbers = [];
-console.log(Math.ceil(totalNum / numPerPage));
   
   for (let i = 1; i <= Math.ceil(totalNum / numPerPage); i++) {
     pageNumbers.push(i);
