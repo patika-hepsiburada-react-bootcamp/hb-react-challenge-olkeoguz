@@ -1,16 +1,24 @@
-import { createContext, useContext } from 'react';
-import { useProducts } from './ProductContext';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const FiltersContext = createContext();
 
 export default FiltersContext;
 
 export const FiltersContextProvider = ({ children }) => {
-  const { products } = useProducts();
+  const [filters, setFilters] = useState({
+    colorFilter: '',
+    brandFilter: '',
+    sorting: 'lowest',// loewst highest,alpha,nonalpha
+  });
 
-  console.log(products);
+  useEffect(() => {
+    console.log(filters);
+  },[filters])
 
-  const values = {};
+  const values = {
+    filters,
+    setFilters
+  };
 
   return (
     <FiltersContext.Provider value={values}>{children}</FiltersContext.Provider>

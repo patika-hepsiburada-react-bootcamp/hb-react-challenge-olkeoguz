@@ -1,6 +1,10 @@
+import React from 'react';
+import { useFilters } from '../../../../contexts/FiltersContext';
 import './Filter.scss';
 
 const Filter = ({ data, filterName }) => {
+  const { filters, setFilters } = useFilters();
+
   let filterData = [];
   if (data) {
     filterData = Object.keys(data).map((key) => ({
@@ -9,15 +13,21 @@ const Filter = ({ data, filterName }) => {
     }));
   }
 
-  console.log(filterData);
+  const changeFilter = (filterName, key) => {
+    setFilters((prev) => ({ ...prev, [filterName]: key }));
+  };
 
   return (
     <div className='filter'>
-      <h3>{filterName}</h3>
+      <h3>{filterName === 'colorFilter' ? 'Colors' : 'Brands'}</h3>
       <ul>
         {filterData &&
           filterData.map((item, index) => (
-            <li key={index}>
+            <li
+              key={index}
+              onClick={() => changeFilter(filterName, item.name)}
+              className={filters[filterName] === item.name ? 'selected' : ''}
+            >
               <span>{item.name}</span> <span>({item.quantity})</span>
             </li>
           ))}
@@ -26,4 +36,4 @@ const Filter = ({ data, filterName }) => {
   );
 };
 
-export default Filter;
+export default React.memo(Filter);

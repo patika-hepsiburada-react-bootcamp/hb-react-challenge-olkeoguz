@@ -9,13 +9,13 @@ import { FiltersContextProvider } from './contexts/FiltersContext';
 
 ReactDOM.render(
   <Router>
-    <ProductContextProvider>
-      <FiltersContextProvider>
+    <FiltersContextProvider>
+      <ProductContextProvider>
         <CartContextProvider>
           <App />
         </CartContextProvider>
-      </FiltersContextProvider>
-    </ProductContextProvider>
+      </ProductContextProvider>
+    </FiltersContextProvider>
   </Router>,
   document.getElementById('root')
 );

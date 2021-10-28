@@ -1,14 +1,33 @@
+import { useFilters } from '../../../../contexts/FiltersContext';
 import '../Filter/Filter.scss';
 
+const sortingOptions = [
+  { name: 'Ascending', text: 'En Düşük Fiyat' },
+  { name: 'Descending', text: 'En Yüksek Fiyat' },
+  { name: 'alpha', text: 'En Yeniler A>Z' },
+  { name: 'nonalpha', text: 'En Yeniler Z>A' },
+];
+
 const Sorting = () => {
+  const { filters, setFilters } = useFilters();
+
+  const changeSorting = (sorting) => {
+    setFilters((prev) => ({ ...prev, sorting }));
+  };
+
   return (
     <div className='filter'>
       <h3>Sorting</h3>
       <ul>
-        <li>En Düşük Fiyat </li>
-        <li>En Yüksek Fiyat </li>
-        <li>En Yeniler (A{'>'}Z ) </li>
-        <li>En Yeniler (Z{'>'}A ) </li>
+        {sortingOptions.map((option) => (
+          <li
+            onClick={() => changeSorting(option.name)}
+            key={option.name}
+            className={filters.sorting === option.name ? 'selected' : ''}
+          >
+            {option.text}
+          </li>
+        ))}
       </ul>
     </div>
   );

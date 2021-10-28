@@ -16,6 +16,11 @@
         cursor: pointer;
         color: var(--hb-orange);
       }
+
+      &.selected {
+        color: var(--hb-orange);
+        font-weight:700;
+      }
     }
   }
 }

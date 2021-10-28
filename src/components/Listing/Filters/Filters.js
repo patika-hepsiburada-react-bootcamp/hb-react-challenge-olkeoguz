@@ -43,9 +43,9 @@ const Filters = () => {
   return (
     <div className='filters'>
       <div className='sticky'>
-        <Filter data={colorsSet} filterName='Tags' />
+        <Filter data={colorsSet} filterName='colorFilter' />
         <Sorting />
-        <Filter data={brandsSet} filterName='Brands' />
+        <Filter data={brandsSet} filterName='brandFilter' />
       </div>
     </div>
   );
