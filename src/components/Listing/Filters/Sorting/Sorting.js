@@ -2,17 +2,18 @@ import { useFilters } from '../../../../contexts/FiltersContext';
 import '../Filter/Filter.scss';
 
 const sortingOptions = [
-  { name: 'Ascending', text: 'En Düşük Fiyat' },
-  { name: 'Descending', text: 'En Yüksek Fiyat' },
-  { name: 'alpha', text: 'En Yeniler A>Z' },
-  { name: 'nonalpha', text: 'En Yeniler Z>A' },
+  { name: 'asc', text: 'En Düşük Fiyat' },
+  { name: 'desc', text: 'En Yüksek Fiyat' },
+  { name: 'newest', text: 'En Yeniler A>Z' },
+  { name: 'oldest', text: 'En Yeniler Z>A' },
 ];
 
 const Sorting = () => {
   const { filters, setFilters } = useFilters();
 
   const changeSorting = (sort) => {
-    setFilters((prev) => ({ ...prev, sort }));
+    if (filters.sort === sort) setFilters((prev) => ({ ...prev, sort: '' }));
+    else setFilters((prev) => ({ ...prev, sort }));
   };
 
   return (

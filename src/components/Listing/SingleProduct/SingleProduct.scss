@@ -9,6 +9,7 @@
 
     .image-container {
       border: none;
+      overflow:hidden;
       img {
         transform: scale(1.05);
       }
@@ -85,7 +86,7 @@
     display: none;
     padding: 12px;
     position: absolute;
-    bottom: 0px;
+    bottom:0px;
     left: 0;
     width: 100%;
     animation: animatebtn 1s;

@@ -1,4 +1,6 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useQuery } from '../helpers/useQuery';
 
 const FiltersContext = createContext();
 
@@ -8,16 +10,34 @@ export const FiltersContextProvider = ({ children }) => {
   const [filters, setFilters] = useState({
     color: '',
     brand: '',
-    sort: 'lowest',// loewst highest,alpha,nonalpha
+    sort: '', // desc asc,newest,oldest
   });
 
-  // useEffect(() => {
-  //   console.log(filters);
-  // },[filters])
+  const history = useHistory();
+  let query = useQuery();
+
+  useEffect(() => {
+    // for the page refreshes
+    if (query.get('brand')) {
+      setFilters((prev) => ({ ...prev, brand: query.get('brand') }));
+    }
+    if (query.get('color')) {
+      setFilters((prev) => ({ ...prev, color: query.get('color') }));
+    }
+    if (query.get('sort')) {
+      setFilters((prev) => ({ ...prev, sort: query.get('sort') }));
+    }
+  }, []);
+
+  useEffect(() => {
+    history.push(
+      `/?color=${filters.color}&brand=${filters.brand}&sort=${filters.sort}`
+    );
+  }, [filters]);
 
   const values = {
     filters,
-    setFilters
+    setFilters,
   };
 
   return (

@@ -1,20 +1,21 @@
-import { useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { useProducts } from '../../../contexts/ProductContext';
 import SingleProduct from '../SingleProduct/SingleProduct';
 import Pagination from '../../Pagination/Pagination';
 import Loading from '../../UI/SkeletonLoading/Loading';
 import './Products.scss';
+import { useQuery } from '../../../helpers/useQuery';
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+// function useQuery() {
+//   return new URLSearchParams(useLocation().search);
+// }
 
 const Products = ({ scrollToProductsRef }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [numPerPage] = useState(12);
-  const { products,loading } = useProducts();
+  const { products, loading } = useProducts();
 
   const history = useHistory();
   let query = useQuery();
@@ -34,7 +35,12 @@ const Products = ({ scrollToProductsRef }) => {
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
-    history.push(`/?page=${pageNumber}`);
+    // history.push(`/page=${pageNumber}`);
+    history.push(`${history.location.pathname}?page=${pageNumber}`);
+    // history.push({
+    //   path: history.location.pathname,
+    //   search: { page: pageNumber },
+    // });
     scrollToProductsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
   return (
