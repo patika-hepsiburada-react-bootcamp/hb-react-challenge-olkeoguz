@@ -14,7 +14,11 @@ const Filter = ({ data, filterName }) => {
   }
 
   const changeFilter = (filterName, key) => {
-    setFilters((prev) => ({ ...prev, [filterName]: key }));
+    if (filters[filterName] === key) {
+      setFilters((prev) => ({ ...prev, [filterName]: '' }));
+    } else {
+      setFilters((prev) => ({ ...prev, [filterName]: key }));
+    }
   };
 
   return (
