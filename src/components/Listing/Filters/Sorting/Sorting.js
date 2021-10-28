@@ -11,8 +11,8 @@ const sortingOptions = [
 const Sorting = () => {
   const { filters, setFilters } = useFilters();
 
-  const changeSorting = (sorting) => {
-    setFilters((prev) => ({ ...prev, sorting }));
+  const changeSorting = (sort) => {
+    setFilters((prev) => ({ ...prev, sort }));
   };
 
   return (
@@ -23,7 +23,7 @@ const Sorting = () => {
           <li
             onClick={() => changeSorting(option.name)}
             key={option.name}
-            className={filters.sorting === option.name ? 'selected' : ''}
+            className={filters.sort === option.name ? 'selected' : ''}
           >
             {option.text}
           </li>

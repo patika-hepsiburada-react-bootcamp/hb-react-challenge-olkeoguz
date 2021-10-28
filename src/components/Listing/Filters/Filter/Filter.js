@@ -19,7 +19,7 @@ const Filter = ({ data, filterName }) => {
 
   return (
     <div className='filter'>
-      <h3>{filterName === 'colorFilter' ? 'Colors' : 'Brands'}</h3>
+      <h3>{filterName === 'color' ? 'Colors' : 'Brands'}</h3>
       <ul>
         {filterData &&
           filterData.map((item, index) => (

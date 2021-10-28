@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const FiltersContext = createContext();
 
@@ -6,14 +6,14 @@ export default FiltersContext;
 
 export const FiltersContextProvider = ({ children }) => {
   const [filters, setFilters] = useState({
-    colorFilter: '',
-    brandFilter: '',
-    sorting: 'lowest',// loewst highest,alpha,nonalpha
+    color: '',
+    brand: '',
+    sort: 'lowest',// loewst highest,alpha,nonalpha
   });
 
-  useEffect(() => {
-    console.log(filters);
-  },[filters])
+  // useEffect(() => {
+  //   console.log(filters);
+  // },[filters])
 
   const values = {
     filters,
