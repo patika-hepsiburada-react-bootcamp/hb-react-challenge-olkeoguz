@@ -4,9 +4,39 @@ import './Header.scss';
 import Button from '../UI/Button/Button';
 import Cart from './Cart/Cart';
 import { useCart } from '../../contexts/CartContext';
+import { useFilters } from '../../contexts/FiltersContext';
+import { useEffect, useState } from 'react';
+import { useQuery } from '../../helpers/useQuery';
 
 const Header = () => {
-  const {cartItems} = useCart();
+  const [searchText, setSearchText] = useState('');
+
+  const { cartItems } = useCart();
+  const { filters, setFilters } = useFilters();
+  console.log(filters);
+  console.log(searchText);
+
+  let query = useQuery();
+
+  useEffect(() => {
+    if (query.get('name')) {
+      setSearchText(query.get('name'));
+    }
+  }, []);
+
+  const encodedSearchText = encodeURI(searchText);
+
+  useEffect(() => {
+    const searchTime = setTimeout(() => {
+      if (searchText.length > 2 || !searchText.length) {
+        setFilters((prev) => ({ ...prev, search: encodedSearchText }));
+      }
+    }, [500]);
+
+    return () => {
+      clearTimeout(searchTime);
+    };
+  }, [searchText]);
   return (
     <header>
       <div className='logo-container'>
@@ -17,6 +47,8 @@ const Header = () => {
         <input
           type='text'
           placeholder="25 milyon'dan fazla ürün içerisinde ara"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
         />
       </div>
       <div className='cart-container'>

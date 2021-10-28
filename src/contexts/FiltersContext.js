@@ -10,7 +10,8 @@ export const FiltersContextProvider = ({ children }) => {
   const [filters, setFilters] = useState({
     color: '',
     brand: '',
-    sort: '', // desc asc,newest,oldest
+    sort: '', // desc asc,newest,oldest,
+    search: '',
   });
 
   const history = useHistory();
@@ -27,11 +28,14 @@ export const FiltersContextProvider = ({ children }) => {
     if (query.get('sort')) {
       setFilters((prev) => ({ ...prev, sort: query.get('sort') }));
     }
+    if (query.get('name')) {
+      setFilters((prev) => ({ ...prev, search: query.get('name') }));
+    }
   }, []);
 
   useEffect(() => {
     history.push(
-      `/?color=${filters.color}&brand=${filters.brand}&sort=${filters.sort}`
+      `/?color=${filters.color}&brand=${filters.brand}&sort=${filters.sort}&name=${filters.search}`
     );
   }, [filters]);
 
