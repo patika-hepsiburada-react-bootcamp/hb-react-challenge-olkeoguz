@@ -2,23 +2,39 @@ import React from 'react';
 import Button from '../../UI/Button/Button';
 import ArrowDown from '../../../assets/icons/ArrowDown.svg';
 import './Bar.scss';
+import { useFilters } from '../../../contexts/FiltersContext';
+import { sortingOptions } from '../Filters/Sorting/Sorting';
+import Done from '../../../assets/icons/Done.svg';
 
 const Bar = () => {
+  const { filters, setFilters } = useFilters();
+
+  const changeSortingHandler = (sort) => {
+    setFilters((prev) => ({ ...prev, sort }));
+  };
+
   return (
     <div className='bar'>
-      <div className="searched-item-container">
+      <div className='searched-item-container'>
         <p className='title'>iPhone iOS cep telefonu</p>
-        <p className="searched-word">
+        <p className='searched-word'>
           Aranan Kelime: <span>iphone 11</span>
         </p>
       </div>
       <div className='sorting'>
         <Button text='Sıralama' iconSrc={ArrowDown} />
         <div className='sorting-options'>
-          <span>Name ascending</span>
-          <span>Name descending</span>
-          <span>Year ascending</span>
-          <span>Year descending</span>
+          {sortingOptions.map((option, index) => (
+            <div key={index} onClick={() => changeSortingHandler(option.name)}>
+              <img
+                src={Done}
+                className={option.name === filters.sort ? 'selected' : ''}
+                alt='asdsd'
+                width={20}
+              />
+              <span>{option.text}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>

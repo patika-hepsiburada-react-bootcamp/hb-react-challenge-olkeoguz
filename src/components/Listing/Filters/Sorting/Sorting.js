@@ -1,7 +1,7 @@
 import { useFilters } from '../../../../contexts/FiltersContext';
 import '../Filter/Filter.scss';
 
-const sortingOptions = [
+export const sortingOptions = [
   { name: 'asc', text: 'En Düşük Fiyat' },
   { name: 'desc', text: 'En Yüksek Fiyat' },
   { name: 'newest', text: 'En Yeniler A>Z' },
