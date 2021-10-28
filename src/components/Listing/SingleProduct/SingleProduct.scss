@@ -3,6 +3,7 @@
   font-size: 12px;
   line-height: 18px;
   position: relative;
+  height:411px;
 
   &:hover {
     border: 1px solid var(--gray-secondary);
@@ -95,6 +96,7 @@
 
 @media (max-width: 512px) {
   .single-product {
+    height:auto;
     .product-cart-btn {
       position: relative;
     }

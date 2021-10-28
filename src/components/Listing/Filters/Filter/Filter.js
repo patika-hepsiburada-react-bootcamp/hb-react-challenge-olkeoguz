@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useFilters } from '../../../../contexts/FiltersContext';
 import './Filter.scss';
 
 const Filter = ({ data, filterName }) => {
   const { filters, setFilters } = useFilters();
 
-  let filterData = [];
-  if (data) {
-    filterData = Object.keys(data).map((key) => ({
+  // const filterData = Object.keys(data).map((key) => ({
+  //   name: key,
+  //   quantity: data[key],
+  // }));
+
+  const filterData = useMemo(() => {
+    return Object.keys(data).map((key) => ({
       name: key,
       quantity: data[key],
     }));
-  }
+  }, [data]);
 
   const changeFilter = (filterName, key) => {
     if (filters[filterName] === key) {
