@@ -8,6 +8,7 @@ export default FiltersContext;
 
 export const FiltersContextProvider = ({ children }) => {
   const [filters, setFilters] = useState({
+    curPage: 1,
     color: '',
     brand: '',
     sort: '', // desc asc,newest,oldest,
@@ -19,6 +20,9 @@ export const FiltersContextProvider = ({ children }) => {
 
   useEffect(() => {
     // for the page refreshes
+    if (query.get('page')) {
+      setFilters((prev) => ({ ...prev, curPage: +query.get('page') }));
+    }
     if (query.get('brand')) {
       setFilters((prev) => ({ ...prev, brand: query.get('brand') }));
     }
@@ -35,7 +39,7 @@ export const FiltersContextProvider = ({ children }) => {
 
   useEffect(() => {
     history.push(
-      `/?color=${filters.color}&brand=${filters.brand}&sort=${filters.sort}&name=${filters.search}`
+      `/?page=${filters.curPage}&brand=${filters.brand}&sort=${filters.sort}&name=${filters.search}&color=${filters.color}`
     );
   }, [filters]);
 

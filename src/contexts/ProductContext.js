@@ -21,7 +21,7 @@ export const ProductContextProvider = ({ children }) => {
   const color = filters.color.length > 0 ? `color=${filters.color}` : '';
   const brand = filters.brand.length > 0 ? `brand=${filters.brand}` : '';
   const sort = filters.sort.length > 0 ? `sort=${filters.sort}` : '';
-  const search = filters.search.length > 2 ? `name=${filters.search}` : '';
+  const search = filters.search.length >= 2 ? `name=${filters.search}` : '';
   baseURL = baseURL + brand + '&' + color + '&' + sort + '&' + search;
 
   const fetchData = useCallback(async (baseURL) => {
