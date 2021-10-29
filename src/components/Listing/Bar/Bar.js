@@ -16,10 +16,12 @@ const Bar = () => {
   return (
     <div className='bar'>
       <div className='searched-item-container'>
-        <p className='title'>iPhone iOS cep telefonu</p>
-        <p className='searched-word'>
-          Aranan Kelime: <span>iphone 11</span>
-        </p>
+        <p className='title'>Cep telefonu</p>
+        {filters.search.length > 2 && (
+          <p className='searched-word'>
+            Aranan Kelime: <span>{decodeURI(filters.search)}</span>
+          </p>
+        )}
       </div>
       <div className='sorting'>
         <Button text='Sıralama' iconSrc={ArrowDown} />

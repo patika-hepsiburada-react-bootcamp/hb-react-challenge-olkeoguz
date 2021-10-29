@@ -40,6 +40,8 @@ const Filters = () => {
     return brandsSet;
   }, [products]);
 
+  console.log(colorsSet);
+
   return (
     <div className='filters'>
       <div className='sticky'>

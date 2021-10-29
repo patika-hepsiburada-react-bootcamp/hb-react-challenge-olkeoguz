@@ -5,7 +5,7 @@ const Backdrop = ({ visible, toggle }) => {
   return (
     <>
       {visible && (
-        <div onClick={() => toggle(false)} className='backdrop'></div>
+        <div data-testid='backdrop' onClick={() => toggle(false)} className='backdrop'></div>
       )}
     </>
   );

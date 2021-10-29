@@ -12,9 +12,7 @@ const Header = () => {
   const [searchText, setSearchText] = useState('');
 
   const { cartItems } = useCart();
-  const { filters, setFilters } = useFilters();
-  console.log(filters);
-  console.log(searchText);
+  const { setFilters } = useFilters();
 
   let query = useQuery();
 
@@ -28,8 +26,15 @@ const Header = () => {
 
   useEffect(() => {
     const searchTime = setTimeout(() => {
-      if (searchText.length > 2 || !searchText.length) {
-        setFilters((prev) => ({ ...prev, search: encodedSearchText }));
+      if (searchText.length >= 2 || !searchText.length) {
+        // setFilters((prev) => ({ ...prev, search: encodedSearchText }));
+        setFilters({
+          curPage: 1,
+          color: '',
+          brand: '',
+          sort: '',
+          search: encodedSearchText,
+        });
       }
     }, [500]);
 
@@ -47,15 +52,16 @@ const Header = () => {
         <input
           type='text'
           placeholder="25 milyon'dan fazla ürün içerisinde ara"
+          data-testid='search-input'
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
       </div>
-      <div className='cart-container'>
+      <div className='cart-container' data-testid='basket'>
         <Button text='Sepetim' />
         <span className='quantity'>{cartItems.length || 0}</span>
         <div className='white-line'></div>
-        <div className='cart'>
+        <div className='cart' data-testid='cart'>
           <Cart />
         </div>
       </div>

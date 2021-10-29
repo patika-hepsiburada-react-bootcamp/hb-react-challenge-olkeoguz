@@ -7,7 +7,11 @@ const Cart = () => {
   const { cartItems, removeFromCart } = useCart();
 
   if (!cartItems.length) {
-    return <div className='cart-items-container'>Henüz sepetiniz boş...</div>;
+    return (
+      <div className='cart-items-container' data-testid='empty-basket'>
+        Henüz sepetiniz boş...
+      </div>
+    );
   }
   return (
     <div className='cart-items-container'>

@@ -5,11 +5,6 @@ import './Filter.scss';
 const Filter = ({ data, filterName }) => {
   const { filters, setFilters } = useFilters();
 
-  // const filterData = Object.keys(data).map((key) => ({
-  //   name: key,
-  //   quantity: data[key],
-  // }));
-
   const filterData = useMemo(() => {
     return Object.keys(data).map((key) => ({
       name: key,

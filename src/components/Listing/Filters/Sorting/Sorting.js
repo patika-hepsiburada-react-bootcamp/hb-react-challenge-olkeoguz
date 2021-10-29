@@ -25,6 +25,7 @@ const Sorting = () => {
             onClick={() => changeSorting(option.name)}
             key={option.name}
             className={filters.sort === option.name ? 'selected' : ''}
+            data-testid="sortOption"
           >
             {option.text}
           </li>
