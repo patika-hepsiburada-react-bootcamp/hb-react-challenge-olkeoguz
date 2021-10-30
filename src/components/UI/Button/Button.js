@@ -6,11 +6,7 @@ const Button = ({ text, iconSrc, type, click, disabled }) => {
     <button
       onClick={click}
       disabled={disabled}
-      className={`btn-container ${iconSrc && 'with-icon'} ${
-        type && type === 'secondary' && 'secondary'
-      } ${type === 'danger' && 'danger'} ${type === 'success' && 'success'} ${
-        type === 'reject' && 'reject'
-      } `}
+      className={`btn-container ${iconSrc && 'with-icon'} ${type && type}`}
     >
       <span>{!disabled ? text : 'Bu ürünü sepete eklemeyemezsiniz'}</span>
       {iconSrc && <img src={iconSrc} alt='arrow-down' />}

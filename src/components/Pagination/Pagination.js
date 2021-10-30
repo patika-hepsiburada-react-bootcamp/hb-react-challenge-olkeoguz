@@ -1,3 +1,4 @@
+import React from 'react';
 import './pagination.scss';
 
 const Pagination = ({ numPerPage, totalNum, paginate, currentPage }) => {
@@ -25,13 +26,15 @@ const Pagination = ({ numPerPage, totalNum, paginate, currentPage }) => {
           </li>
         ))}
       </ul>
-      {currentPage <= Math.floor(totalNum / (numPerPage + 1)) && (
-        <span className='arrow' onClick={() => paginate(currentPage + 1)}>
-          {'>'}
-        </span>
-      )}
+      {currentPage <= Math.round(totalNum / (numPerPage + 1)) &&
+        // temp bug fix ↓
+        totalNum >= 12 && (
+          <span className='arrow' onClick={() => paginate(currentPage + 1)}>
+            {'>'}
+          </span>
+        )}
     </div>
   );
 };
 
-export default Pagination;
+export default React.memo(Pagination);
