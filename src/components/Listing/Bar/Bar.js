@@ -11,7 +11,7 @@ const Bar = () => {
 
   const changeSortingHandler = (sort) => {
     if (filters.sort === sort) {
-      setFilters((prev) => ({ ...prev,sort: ''}));
+      setFilters((prev) => ({ ...prev, sort: '' }));
     } else {
       setFilters((prev) => ({ ...prev, sort }));
     }
@@ -23,22 +23,33 @@ const Bar = () => {
         <p className='title'>Cep telefonu</p>
         {filters.search.length >= 2 && (
           <p className='searched-word'>
-            Aranan Kelime: <span>{decodeURI(filters.search)}</span>
+            Aranan Kelime:{' '}
+            <span data-testid='searched-word'>{decodeURI(filters.search)}</span>
           </p>
         )}
       </div>
       <div className='sorting'>
         <Button text='Sıralama' iconSrc={ArrowDown} />
-        <div className='sorting-options'>
+        <div className='sorting-options' data-testid='sorting-options'>
           {sortingOptions.map((option, index) => (
-            <div key={index} onClick={() => changeSortingHandler(option.name)}>
+            <div
+              key={index}
+              onClick={() => changeSortingHandler(option.name)}
+              data-testid='single-option'
+            >
               <img
                 src={Done}
                 className={option.name === filters.sort ? 'selected' : ''}
                 alt='asdsd'
                 width={20}
               />
-              <span>{option.text}</span>
+              <span
+                data-testid={
+                  option.name === filters.sort ? 'selected-sorting-option' : ''
+                }
+              >
+                {option.text}
+              </span>
             </div>
           ))}
         </div>
