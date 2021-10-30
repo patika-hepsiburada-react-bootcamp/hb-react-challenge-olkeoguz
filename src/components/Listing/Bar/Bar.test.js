@@ -4,7 +4,7 @@ import Bar from './Bar';
 
 import '@testing-library/jest-dom/extend-expect';
 
-describe('header component', () => {
+describe('bar component', () => {
   let filters = {
     color: '',
     brand: '',

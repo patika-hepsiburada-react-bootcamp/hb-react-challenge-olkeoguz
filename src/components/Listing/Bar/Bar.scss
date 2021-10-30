@@ -4,7 +4,12 @@
 
   @media (max-width: 512px) {
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    & .title {
+      margin-bottom: 10px;
+    }
   }
 
   .searched-item-container {
