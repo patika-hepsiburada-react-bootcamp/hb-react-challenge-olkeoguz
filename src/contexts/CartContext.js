@@ -7,9 +7,7 @@ export default CartContext;
 export const CartContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-
-  // product to be deleted
-  const [prodId, setProdId] = useState();
+  const [prodId, setProdId] = useState(); // product to be deleted
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
