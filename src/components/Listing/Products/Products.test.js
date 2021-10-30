@@ -3,7 +3,9 @@ import FiltersContext from '../../../contexts/FiltersContext';
 import Products from './Products';
 import ProductContext from '../../../contexts/ProductContext';
 
-describe('header component', () => {
+import '@testing-library/jest-dom/extend-expect';
+
+describe('products component', () => {
   let filters = {
     color: '',
     brand: '',
@@ -20,7 +22,7 @@ describe('header component', () => {
     };
   };
 
-  const products = [
+  let products = [
     {
       id: 1123,
       brand: 'Apple',
@@ -36,7 +38,7 @@ describe('header component', () => {
 
   let loading = false;
 
-  it('should be rendered', () => {
+  it('should be rendered if no error and no loading', () => {
     const component = render(
       <FiltersContext.Provider
         value={{
@@ -44,7 +46,7 @@ describe('header component', () => {
           setFilters,
         }}
       >
-        <ProductContext.Provider value={{ products, loading }}>
+        <ProductContext.Provider value={{ products, loading, error: false }}>
           <Products />
         </ProductContext.Provider>
       </FiltersContext.Provider>
@@ -53,13 +55,36 @@ describe('header component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should be rendered if the loading is true', () => {
-    loading = false;
+  it('should render loading  if loading is true', () => {
+    loading = true;
     const component = render(
       <FiltersContext.Provider
         value={{
           filters,
           setFilters,
+        }}
+      >
+        <ProductContext.Provider value={{ products: [], loading }}>
+          <Products />
+        </ProductContext.Provider>
+      </FiltersContext.Provider>
+    );
+
+    expect(component.getAllByTestId('skeleton-loading')[0]).toBeInTheDocument();
+  });
+
+  it('should render empty search results if the loading is false and products length is 0', () => {
+    loading = false;
+
+    products = [];
+
+    const component = render(
+      <FiltersContext.Provider
+        value={{
+          filters,
+          setFilters,
+          error: false,
+          loading: false,
         }}
       >
         <ProductContext.Provider value={{ products, loading }}>
@@ -68,40 +93,109 @@ describe('header component', () => {
       </FiltersContext.Provider>
     );
 
-    expect(component).toBeTruthy();
+    expect(component.getByTestId('empty-result')).toBeInTheDocument();
+  });
+
+  it('should be giving error message if the loading is false and the error is true', () => {
+    loading = false;
+    let error = true;
+    const component = render(
+      <FiltersContext.Provider
+        value={{
+          filters,
+          setFilters,
+        }}
+      >
+        <ProductContext.Provider value={{ products, loading, error }}>
+          <Products />
+        </ProductContext.Provider>
+      </FiltersContext.Provider>
+    );
+    expect(component.getByTestId('fetch-products-error')).toBeInTheDocument();
+  });
+
+  it('should render a pagination list when products are listed', () => {
+    loading = false;
+    let error = false;
+
+    products = [
+      {
+        id: 1123,
+        brand: 'Apple',
+        name: 'Apple Test Pro',
+        price: 12000,
+        color: 'Siyah',
+        imageURL:
+          'https://productimages.hepsiburada.net/s/49/400-592/10986385899570.jpg',
+        discount: 10,
+        createdDate: '2021-10-02T10:07:44',
+      },
+      {
+        id: 2,
+        brand: 'Apple',
+        name: 'Apple Test Pro',
+        price: 12000,
+        color: 'Siyah',
+        imageURL:
+          'https://productimages.hepsiburada.net/s/49/400-592/10986385899570.jpg',
+        discount: 10,
+        createdDate: '2021-10-02T10:07:44',
+      },
+    ];
+    const component = render(
+      <FiltersContext.Provider
+        value={{
+          filters,
+          setFilters,
+        }}
+      >
+        <ProductContext.Provider value={{ products, loading, error }}>
+          <Products />
+        </ProductContext.Provider>
+      </FiltersContext.Provider>
+    );
+    expect(component.getByTestId('paginationList')).toBeInTheDocument();
+  });
+
+  it('should render 2 SingleProduct component when product lengt is 2', () => {
+    loading = false;
+
+    products = [
+      {
+        id: 1123,
+        brand: 'Apple',
+        name: 'Apple Test Pro',
+        price: 12000,
+        color: 'Siyah',
+        imageURL:
+          'https://productimages.hepsiburada.net/s/49/400-592/10986385899570.jpg',
+        discount: 10,
+        createdDate: '2021-10-02T10:07:44',
+      },
+      {
+        id: 2,
+        brand: 'Apple',
+        name: 'Apple Test Pro',
+        price: 12000,
+        color: 'Siyah',
+        imageURL:
+          'https://productimages.hepsiburada.net/s/49/400-592/10986385899570.jpg',
+        discount: 10,
+        createdDate: '2021-10-02T10:07:44',
+      },
+    ];
+    const component = render(
+      <FiltersContext.Provider
+        value={{
+          filters,
+          setFilters,
+        }}
+      >
+        <ProductContext.Provider value={{ products, loading, error:false }}>
+          <Products />
+        </ProductContext.Provider>
+      </FiltersContext.Provider>
+    );
+    expect(component.getAllByTestId('single-product').length).toEqual(2);
   });
 });
-
-
-// describe('should render Single Product when products are provided', () => {
-//   it('is mini cart rendering on Hover', () => {
-
-//     beforeEach(() => {
-//       // console.log("Her testten önce çalışacağım!");
-//       render(
-//         <ProductContextProvider
-//           value={{
-//             products: [
-//               {
-//                 id: 1123,
-//                 brand: 'Apple',
-//                 name: 'Apple Test Pro',
-//                 price: 12000,
-//                 color: 'Siyah',
-//                 imageURL:
-//                   'https://productimages.hepsiburada.net/s/49/400-592/10986385899570.jpg',
-//                 discount: 10,
-//                 createdDate: '2021-10-02T10:07:44',
-//               },
-//             ],
-//           }}
-//         >
-//           <Products />
-//         </ProductContextProvider>
-//       );
-//     });
-
-//     const element = screen.getByText("Apple Test Pro")
-//     expect(element).toBeInTheDocument();
-//   });
-// });

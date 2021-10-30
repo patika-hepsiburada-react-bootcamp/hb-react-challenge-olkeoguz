@@ -11,7 +11,7 @@ import './Products.scss';
 
 const Products = ({ scrollToProductsRef }) => {
   const [numPerPage] = useState(12);
-  const { products, loading } = useProducts();
+  const { products, loading, error } = useProducts();
 
   const { filters, setFilters } = useFilters();
 
@@ -26,19 +26,29 @@ const Products = ({ scrollToProductsRef }) => {
     scrollToProductsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-  if (!loading && !products.length) {
+  if (error) {
     return (
       <div className='products-main'>
-          <h3>Aradığınız kriterlere uygun bir ürün bulamadık...</h3>
+        <h3 data-testid='fetch-products-error'>
+          Geçici olarak ürünleri listeleyemiyoruz.Lütfen daha sonra tekrar deneyin...
+        </h3>
+      </div>
+    );
+  }
+
+  if (!loading && !products.length) {
+    return (
+      <div className='products-main' data-testid='empty-result'>
+        <h3>Aradığınız kriterlere uygun bir ürün bulamadık...</h3>
       </div>
     );
   }
   return (
     <div className='products-main'>
-      <div className='products-container'>
+      <div className='products-container' data-testid='listing-products'>
         {loading && [...Array(12)].map((_, index) => <Loading key={index} />)}
         {currentResults.map((prod) => (
-          <SingleProduct key={prod.id} product={prod} />
+          <SingleProduct key={prod.id} product={prod} id="singleprod" />
         ))}
       </div>
       <Pagination

@@ -19,10 +19,12 @@ export const ProductContextProvider = ({ children }) => {
   const { filters } = useFilters();
 
   let baseURL = `https://quiet-thicket-51521.herokuapp.com/products?`;
+
   const color = filters.color.length > 0 ? `color=${filters.color}` : '';
   const brand = filters.brand.length > 0 ? `brand=${filters.brand}` : '';
   const sort = filters.sort.length > 0 ? `sort=${filters.sort}` : '';
   const search = filters.search.length >= 2 ? `name=${filters.search}` : '';
+
   baseURL = baseURL + brand + '&' + color + '&' + sort + '&' + search;
 
   const fetchData = useCallback(async (baseURL) => {
@@ -35,7 +37,7 @@ export const ProductContextProvider = ({ children }) => {
       setError(true);
     }
     setLoading(false);
-  }, []);
+  }, [baseURL]);
 
   useEffect(() => {
     fetchData(baseURL);
