@@ -1,9 +1,8 @@
-import PageNumbers from './PageNumbers';
 import './pagination.scss';
 
 const Pagination = ({ numPerPage, totalNum, paginate, currentPage }) => {
   const pageNumbers = [];
-  
+
   for (let i = 1; i <= Math.ceil(totalNum / numPerPage); i++) {
     pageNumbers.push(i);
   }
@@ -15,13 +14,17 @@ const Pagination = ({ numPerPage, totalNum, paginate, currentPage }) => {
           {'<'}
         </span>
       )}
-      <PageNumbers
-        numPerPage={numPerPage}
-        totalNum={totalNum}
-        paginate={paginate}
-        currentPage={currentPage}
-        pageNumbers={pageNumbers}
-      />
+      <ul className='paginationList'>
+        {pageNumbers.map((number) => (
+          <li
+            key={number}
+            className={number === currentPage ? 'pageNum active' : 'pageNum'}
+            onClick={() => paginate(number)}
+          >
+            <span className='pageLink'>{number}</span>
+          </li>
+        ))}
+      </ul>
       {currentPage <= Math.floor(totalNum / (numPerPage + 1)) && (
         <span className='arrow' onClick={() => paginate(currentPage + 1)}>
           {'>'}

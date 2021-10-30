@@ -26,7 +26,7 @@ const Header = () => {
 
   useEffect(() => {
     const searchTime = setTimeout(() => {
-      if (searchText.length >= 2 || !searchText.length) {
+      if (searchText.length >= 2) {
         // setFilters((prev) => ({ ...prev, search: encodedSearchText }));
         setFilters({
           curPage: 1,
