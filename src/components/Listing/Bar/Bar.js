@@ -10,14 +10,18 @@ const Bar = () => {
   const { filters, setFilters } = useFilters();
 
   const changeSortingHandler = (sort) => {
-    setFilters((prev) => ({ ...prev, sort }));
+    if (filters.sort === sort) {
+      setFilters((prev) => ({ ...prev,sort: ''}));
+    } else {
+      setFilters((prev) => ({ ...prev, sort }));
+    }
   };
 
   return (
     <div className='bar'>
       <div className='searched-item-container'>
         <p className='title'>Cep telefonu</p>
-        {filters.search.length > 2 && (
+        {filters.search.length >= 2 && (
           <p className='searched-word'>
             Aranan Kelime: <span>{decodeURI(filters.search)}</span>
           </p>

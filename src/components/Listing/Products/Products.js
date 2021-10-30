@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 
 import { useProducts } from '../../../contexts/ProductContext';
 import { useFilters } from '../../../contexts/FiltersContext';
@@ -25,6 +25,14 @@ const Products = ({ scrollToProductsRef }) => {
     setFilters((prev) => ({ ...prev, curPage: pageNumber }));
     scrollToProductsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
+
+  if (!loading && !products.length) {
+    return (
+      <div className='products-main'>
+          <h3>Aradığınız kriterlere uygun bir ürün bulamadık...</h3>
+      </div>
+    );
+  }
   return (
     <div className='products-main'>
       <div className='products-container'>

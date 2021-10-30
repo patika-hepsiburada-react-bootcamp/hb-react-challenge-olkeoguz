@@ -20,27 +20,27 @@ export const FiltersContextProvider = ({ children }) => {
 
   useEffect(() => {
     // for the page refreshes
-    if (query.get('page')) {
-      setFilters((prev) => ({ ...prev, curPage: +query.get('page') }));
-    }
-    if (query.get('brand')) {
-      setFilters((prev) => ({ ...prev, brand: query.get('brand') }));
-    }
-    if (query.get('color')) {
-      setFilters((prev) => ({ ...prev, color: query.get('color') }));
-    }
-    if (query.get('sort')) {
-      setFilters((prev) => ({ ...prev, sort: query.get('sort') }));
-    }
-    if (query.get('name')) {
-      setFilters((prev) => ({ ...prev, search: query.get('name') }));
+    for (let key in filters) {
+      if (key === 'curPage' && query.get('page')) {
+        // page query is an exception since the query is defined as page and the filter is curPage
+        setFilters((prev) => ({ ...prev, curPage: +query.get('page') }));
+      }
+      if (query.get(key)) {
+        setFilters((prev) => ({ ...prev, [key]: query.get(key) }));
+      }
     }
   }, []);
 
   useEffect(() => {
-    history.push(
-      `/?page=${filters.curPage}&brand=${filters.brand}&sort=${filters.sort}&name=${filters.search}&color=${filters.color}`
-    );
+    let queryString = '/?';
+    for (let key in filters) {
+      if (key === 'curPage') {
+        queryString += (`page=${filters.curPage}`);
+      } else {
+        queryString += (`&${key}=${filters[key]}`);
+      }
+    }
+    history.push(queryString);
   }, [filters]);
 
   const values = {
