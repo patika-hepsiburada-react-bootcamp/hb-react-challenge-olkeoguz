@@ -14,10 +14,11 @@ export default ProductContext;
 export const ProductContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const { filters } = useFilters();
 
-  let baseURL = `http://localhost/products?`;
+  let baseURL = `https://quiet-thicket-51521.herokuapp.com/products?`;
   const color = filters.color.length > 0 ? `color=${filters.color}` : '';
   const brand = filters.brand.length > 0 ? `brand=${filters.brand}` : '';
   const sort = filters.sort.length > 0 ? `sort=${filters.sort}` : '';
@@ -26,9 +27,13 @@ export const ProductContextProvider = ({ children }) => {
 
   const fetchData = useCallback(async (baseURL) => {
     setLoading(true);
-    const res = await fetch(baseURL);
-    const data = await res.json();
-    setProducts(data);
+    try {
+      const res = await fetch(baseURL);
+      const data = await res.json();
+      setProducts(data);
+    } catch (error) {
+      setError(true);
+    }
     setLoading(false);
   }, []);
 
@@ -40,6 +45,7 @@ export const ProductContextProvider = ({ children }) => {
     products,
     setProducts,
     loading,
+    error
   };
 
   return (
