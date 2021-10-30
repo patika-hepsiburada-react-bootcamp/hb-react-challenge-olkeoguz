@@ -15,7 +15,7 @@ const Pagination = ({ numPerPage, totalNum, paginate, currentPage }) => {
           {'<'}
         </span>
       )}
-      <ul className='paginationList'>
+      <ul className='paginationList' data-testid="paginationList">
         {pageNumbers.map((number) => (
           <li
             key={number}

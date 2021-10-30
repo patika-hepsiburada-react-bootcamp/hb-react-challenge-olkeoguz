@@ -14,7 +14,7 @@ const SingleProduct = ({ product }) => {
     [cartItems]
   );
   return (
-    <div className='single-product'>
+    <div className='single-product' data-testid="single-product">
       <div className='image-container'>
         <img src={product.imageURL} alt={product.name} />
       </div>

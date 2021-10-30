@@ -156,46 +156,4 @@ describe('products component', () => {
     );
     expect(component.getByTestId('paginationList')).toBeInTheDocument();
   });
-
-  it('should render 2 SingleProduct component when product lengt is 2', () => {
-    loading = false;
-
-    products = [
-      {
-        id: 1123,
-        brand: 'Apple',
-        name: 'Apple Test Pro',
-        price: 12000,
-        color: 'Siyah',
-        imageURL:
-          'https://productimages.hepsiburada.net/s/49/400-592/10986385899570.jpg',
-        discount: 10,
-        createdDate: '2021-10-02T10:07:44',
-      },
-      {
-        id: 2,
-        brand: 'Apple',
-        name: 'Apple Test Pro',
-        price: 12000,
-        color: 'Siyah',
-        imageURL:
-          'https://productimages.hepsiburada.net/s/49/400-592/10986385899570.jpg',
-        discount: 10,
-        createdDate: '2021-10-02T10:07:44',
-      },
-    ];
-    const component = render(
-      <FiltersContext.Provider
-        value={{
-          filters,
-          setFilters,
-        }}
-      >
-        <ProductContext.Provider value={{ products, loading, error:false }}>
-          <Products />
-        </ProductContext.Provider>
-      </FiltersContext.Provider>
-    );
-    expect(component.getAllByTestId('single-product').length).toEqual(2);
-  });
 });
