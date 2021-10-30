@@ -14,9 +14,9 @@ const Filter = ({ data, filterName }) => {
 
   const changeFilter = (filterName, key) => {
     if (filters[filterName] === key) {
-      setFilters((prev) => ({ ...prev, [filterName]: '' }));
+      setFilters((prev) => ({ ...prev, [filterName]: '', curPage: 1 }));
     } else {
-      setFilters((prev) => ({ ...prev, [filterName]: key }));
+      setFilters((prev) => ({ ...prev, [filterName]: key, curPage: 1 }));
     }
   };
 

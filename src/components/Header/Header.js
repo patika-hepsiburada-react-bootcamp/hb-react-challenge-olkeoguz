@@ -42,9 +42,20 @@ const Header = () => {
       clearTimeout(searchTime);
     };
   }, [searchText]);
+
+  const emptyAllFilters = () => {
+    setFilters({
+      curPage: 1,
+      color: '',
+      brand: '',
+      sort: '',
+      search: '',
+    });
+    setSearchText('');
+  };
   return (
     <header>
-      <div className='logo-container'>
+      <div className='logo-container' onClick={emptyAllFilters}>
         <img className='logo' src={Logo} alt='logo' />
       </div>
       <div className='search-bar'>

@@ -40,8 +40,6 @@ const Filters = () => {
     return brandsSet;
   }, [products]);
 
-  console.log(colorsSet);
-
   return (
     <div className='filters'>
       <div className='sticky'>
@@ -53,4 +51,4 @@ const Filters = () => {
   );
 };
 
-export default Filters;
+export default React.memo(Filters);
