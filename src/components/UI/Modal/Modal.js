@@ -8,9 +8,9 @@ const Modal = ({ title, text }) => {
   return (
     <>
       {modalOpen && (
-        <div className='modal'>
+        <div className='modal' data-testid="modal-container">
           <div className='title'>
-            <p>{title}</p>
+            <p data-testid="modal-id">{title}</p>
           </div>
           <div className='body'>{text}</div>
           <div className='footer'>
@@ -19,10 +19,12 @@ const Modal = ({ title, text }) => {
                 text='Evet'
                 type='success'
                 click={() => confirmRemoving(true)}
+                data-testid="confirmation"
               />
               <Button
                 text='Hayır'
                 type='reject'
+                data-testid="reject"
                 click={() => confirmRemoving(false)}
               />
             </div>

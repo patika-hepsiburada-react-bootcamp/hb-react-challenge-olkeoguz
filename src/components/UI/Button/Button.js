@@ -7,6 +7,7 @@ const Button = ({ text, iconSrc, type, click, disabled }) => {
       onClick={click}
       disabled={disabled}
       className={`btn-container ${iconSrc && 'with-icon'} ${type && type}`}
+      data-testid="button"
     >
       <span>{!disabled ? text : 'Bu ürünü sepete eklemeyemezsiniz'}</span>
       {iconSrc && <img src={iconSrc} alt='arrow-down' />}
