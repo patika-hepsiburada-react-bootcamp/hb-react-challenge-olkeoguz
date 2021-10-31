@@ -1,12 +1,25 @@
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { useCart } from '../../../contexts/CartContext';
 import Button from '../../UI/Button/Button';
 import './SingleProduct.scss';
 
+import ImageGallery from 'react-image-gallery';
+
 const SingleProduct = ({ product }) => {
   const { addToCart, cartItems } = useCart();
+
+  const galleryRef = useRef();
+
   const clickHandler = () => {
     addToCart(product);
+  };
+
+  const startAutoPlay = () => {
+    galleryRef.current.play();
+  };
+
+  const stopAutoPlay = () => {
+    galleryRef.current.pause();
   };
 
   const itemIsInCart = useMemo(
@@ -14,9 +27,22 @@ const SingleProduct = ({ product }) => {
     [cartItems]
   );
   return (
-    <div className='single-product' data-testid="single-product">
+    <div
+      className='single-product'
+      data-testid='single-product'
+      onMouseOver={startAutoPlay}
+      onMouseLeave={stopAutoPlay}
+    >
       <div className='image-container'>
-        <img src={product.imageURL} alt={product.name} />
+        <ImageGallery
+          items={product.images}
+          showFullscreenButton={false}
+          showBullets={true}
+          showNav={false}
+          showPlayButton={false}
+          slideInterval={1500}
+          ref={galleryRef}
+        />
       </div>
       <p className='product-name'>{product.name}</p>
       <div className='product-body'>
@@ -41,7 +67,12 @@ const SingleProduct = ({ product }) => {
         </div>
       </div>
       <div className='product-cart-btn'>
-        <Button disabled={itemIsInCart} text='Sepete ekle' type='secondary' click={clickHandler} />
+        <Button
+          disabled={itemIsInCart}
+          text='Sepete ekle'
+          type='secondary'
+          click={clickHandler}
+        />
       </div>
     </div>
   );
