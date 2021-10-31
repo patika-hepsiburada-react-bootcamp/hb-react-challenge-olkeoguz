@@ -2,7 +2,7 @@
 
 <a href="https://eloquent-hypatia-4f41ba.netlify.app/?page=1&color=&brand=&sort=&search=" target="_blank">Live Demo</a>
 <br>
-<a href="https://quiet-thicket-51521.herokuapp.com/products" target="_blank">Backend Demo</a>d
+<a href="https://quiet-thicket-51521.herokuapp.com/products" target="_blank">Backend Demo</a>
 <br/>
 <a href="https://github.com/patika-hepsiburada-react-bootcamp/hb-challenge-backend-olkeoguz" target="_blank">Github repository of the backend</a>
 
@@ -10,9 +10,9 @@
 
 ## Libraries used in this project
 
-- > react-router-dom is used for storing the filter queries in the url in order to maintain the filters when the page refreshes.
-- > react-image-gallery is used for the image carousel.
-d
+- react-router-dom is used for storing the filter queries in the url in order to maintain the filters when the page refreshes.
+
+- react-image-gallery is used for the image carousel.
 <hr/>
 
 ## Tests
