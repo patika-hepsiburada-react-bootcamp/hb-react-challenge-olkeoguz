@@ -35,9 +35,9 @@ export const FiltersContextProvider = ({ children }) => {
     let queryString = '/?';
     for (let key in filters) {
       if (key === 'curPage') {
-        queryString += (`page=${filters.curPage}`);
+        queryString += `page=${filters.curPage}`;
       } else {
-        queryString += (`&${key}=${filters[key]}`);
+        queryString += `&${key}=${filters[key]}`;
       }
     }
     history.push(queryString);

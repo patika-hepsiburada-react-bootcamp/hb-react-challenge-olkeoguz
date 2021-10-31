@@ -27,17 +27,20 @@ export const ProductContextProvider = ({ children }) => {
 
   baseURL = baseURL + brand + '&' + color + '&' + sort + '&' + search;
 
-  const fetchData = useCallback(async (baseURL) => {
-    setLoading(true);
-    try {
-      const res = await fetch(baseURL);
-      const data = await res.json();
-      setProducts(data);
-    } catch (error) {
-      setError(true);
-    }
-    setLoading(false);
-  }, [baseURL]);
+  const fetchData = useCallback(
+    async (baseURL) => {
+      setLoading(true);
+      try {
+        const res = await fetch(baseURL);
+        const data = await res.json();
+        setProducts(data);
+      } catch (error) {
+        setError(true);
+      }
+      setLoading(false);
+    },
+    [baseURL]
+  );
 
   useEffect(() => {
     fetchData(baseURL);
@@ -47,7 +50,7 @@ export const ProductContextProvider = ({ children }) => {
     products,
     setProducts,
     loading,
-    error
+    error,
   };
 
   return (

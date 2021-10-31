@@ -1,4 +1,4 @@
-import { render} from '@testing-library/react';
+import { render } from '@testing-library/react';
 import CartContext from '../../../contexts/CartContext';
 import Cart from './Cart';
 
@@ -32,8 +32,12 @@ describe('cart component', () => {
         createdDate: '2021-01-28T10:07:44',
         discount: 10,
         id: 15,
-        imageURL:
-          'https://productimages.hepsiburada.net/s/36/550/10503083130930.jpg/format:webp',
+        images: [
+          {
+            original:
+              'https://productimages.hepsiburada.net/s/36/550/10503083130930.jpg/format:webp',
+          },
+        ],
         name: 'Samsung Galaxy Note 10 Lite',
         price: 6336,
       },
@@ -43,8 +47,12 @@ describe('cart component', () => {
         createdDate: '2021-01-28T10:07:44',
         discount: 12,
         id: 10,
-        imageURL:
-          'https://productimages.hepsiburada.net/s/36/550/10503083130930.jpg/format:webp',
+        images: [
+          {
+            original:
+              'https://productimages.hepsiburada.net/s/36/550/10503083130930.jpg/format:webp',
+          },
+        ],
         name: 'Samsung Galaxy Note 10 Lite',
         price: 5122,
       },

@@ -22,9 +22,7 @@ describe('Filters Context', () => {
     );
   });
 
-
   it('should have filters', () => {
     expect(testFilters).toBeTruthy();
   });
-
 });

@@ -1,11 +1,13 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import App from './App';
+
 import { ProductContextProvider } from './contexts/ProductContext';
 import { CartContextProvider } from './contexts/CartContext';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { FiltersContextProvider } from './contexts/FiltersContext';
+
+import './index.scss';
 
 ReactDOM.render(
   <Router>

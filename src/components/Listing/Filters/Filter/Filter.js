@@ -30,7 +30,9 @@ const Filter = ({ data, filterName }) => {
               key={index}
               onClick={() => changeFilter(filterName, item.name)}
               className={filters[filterName] === item.name ? 'selected' : ''}
-              data-testid={filters[filterName] === item.name ? 'selected-filter' : 'filter'}
+              data-testid={
+                filters[filterName] === item.name ? 'selected-filter' : 'filter'
+              }
             >
               <span>{item.name}</span> <span>({item.quantity})</span>
             </li>

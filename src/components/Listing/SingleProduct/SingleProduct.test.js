@@ -9,8 +9,12 @@ describe('single product component', () => {
     name: 'Apple Test Pro',
     price: 12000,
     color: 'Siyah',
-    imageURL:
-      'https://productimages.hepsiburada.net/s/49/400-592/10986385899570.jpg',
+    images: [
+      {
+        original:
+          'https://productimages.hepsiburada.net/s/36/550/10503083130930.jpg/format:webp',
+      },
+    ],
     discount: 10,
     createdDate: '2021-10-02T10:07:44',
   };
@@ -22,8 +26,12 @@ describe('single product component', () => {
       name: 'Apple Test Pro',
       price: 12000,
       color: 'Siyah',
-      imageURL:
-        'https://productimages.hepsiburada.net/s/49/400-592/10986385899570.jpg',
+      images: [
+        {
+          original:
+            'https://productimages.hepsiburada.net/s/36/550/10503083130930.jpg/format:webp',
+        },
+      ],
       discount: 10,
       createdDate: '2021-10-02T10:07:44',
     },
@@ -41,4 +49,3 @@ describe('single product component', () => {
     expect(component).toBeTruthy();
   });
 });
-

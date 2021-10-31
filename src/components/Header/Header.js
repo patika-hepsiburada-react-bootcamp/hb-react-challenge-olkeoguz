@@ -1,12 +1,16 @@
+import { useEffect, useState } from 'react';
+
 import Logo from '../../assets/logo/Logo.svg';
 import Search from '../../assets/icons/Search.svg';
-import './Header.scss';
 import Button from '../UI/Button/Button';
 import Cart from './Cart/Cart';
+
 import { useCart } from '../../contexts/CartContext';
 import { useFilters } from '../../contexts/FiltersContext';
-import { useEffect, useState } from 'react';
+
 import { useQuery } from '../../helpers/useQuery';
+
+import './Header.scss';
 
 const Header = () => {
   const [searchText, setSearchText] = useState('');

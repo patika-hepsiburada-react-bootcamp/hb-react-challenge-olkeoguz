@@ -1,8 +1,11 @@
 import React, { useMemo } from 'react';
+
 import { useProducts } from '../../../contexts/ProductContext';
+
 import Filter from './Filter/Filter';
-import './Filters.scss';
 import Sorting from './Sorting/Sorting';
+
+import './Filters.scss';
 
 const Filters = () => {
   const { products } = useProducts();

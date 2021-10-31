@@ -14,10 +14,10 @@ describe('Cart Context', () => {
     render(
       <CartContextProvider>
         <CartContext.Consumer>
-          {({ modalOpen,cartItems,setModalOpen }) => {
-            testModalOpen= modalOpen;
-            testCartItems= cartItems;
-            testSetModalOpen=setModalOpen;
+          {({ modalOpen, cartItems, setModalOpen }) => {
+            testModalOpen = modalOpen;
+            testCartItems = cartItems;
+            testSetModalOpen = setModalOpen;
           }}
         </CartContext.Consumer>
       </CartContextProvider>
@@ -27,7 +27,7 @@ describe('Cart Context', () => {
   it('should not render modal', () => {
     expect(testModalOpen).toBeFalsy();
   });
-  
+
   it('should not have any cart items', () => {
     expect(testCartItems).toBeFalsy();
   });

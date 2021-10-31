@@ -1,4 +1,4 @@
-import { render,fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import FiltersContext from '../../../contexts/FiltersContext';
 import Bar from './Bar';
 
@@ -8,7 +8,7 @@ describe('bar component', () => {
   let filters = {
     color: '',
     brand: '',
-    sort: '', // desc asc,newest,oldest,
+    sort: '',
     search: '',
   };
 
@@ -65,14 +65,13 @@ describe('bar component', () => {
     const button = component.getByTestId('button');
     fireEvent.mouseOver(button);
     expect(component.getByTestId('sorting-options')).toBeInTheDocument();
-
   });
 
   it('should render the word user searches ', () => {
-     filters = {
-      sort:"asc",
-      search:"samsung"
-    }
+    filters = {
+      sort: 'asc',
+      search: 'samsung',
+    };
     const component = render(
       <FiltersContext.Provider
         value={{
@@ -84,14 +83,13 @@ describe('bar component', () => {
       </FiltersContext.Provider>
     );
     expect(component.getByTestId('searched-word').innerHTML).toBe('samsung');
-
   });
 
   it('should change the sorting option when clicked ', () => {
-     filters = {
-      sort:"asc",
-      search:""
-    }
+    filters = {
+      sort: 'asc',
+      search: '',
+    };
     const component = render(
       <FiltersContext.Provider
         value={{
@@ -104,6 +102,8 @@ describe('bar component', () => {
     );
     const option = component.getAllByTestId('single-option')[2];
     fireEvent.click(option);
-    expect(component.getByTestId('selected-sorting-option').innerHTML).toBe('En Düşük Fiyat');
+    expect(component.getByTestId('selected-sorting-option').innerHTML).toBe(
+      'En Düşük Fiyat'
+    );
   });
 });

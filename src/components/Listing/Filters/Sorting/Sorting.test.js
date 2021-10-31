@@ -57,6 +57,8 @@ describe('sorting component', () => {
 
     const sortOption = component.getAllByTestId('sortOption')[1];
     fireEvent.click(sortOption);
-    expect(component.getByTestId('selected-sortOption').innerHTML).toBe("En Düşük Fiyat");
+    expect(component.getByTestId('selected-sortOption').innerHTML).toBe(
+      'En Düşük Fiyat'
+    );
   });
 });

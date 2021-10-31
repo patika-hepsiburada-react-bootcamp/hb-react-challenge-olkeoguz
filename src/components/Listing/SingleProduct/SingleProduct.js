@@ -1,9 +1,8 @@
 import { useMemo, useRef } from 'react';
 import { useCart } from '../../../contexts/CartContext';
 import Button from '../../UI/Button/Button';
-import './SingleProduct.scss';
-
 import ImageGallery from 'react-image-gallery';
+import './SingleProduct.scss';
 
 const SingleProduct = ({ product }) => {
   const { addToCart, cartItems } = useCart();

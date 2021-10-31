@@ -1,19 +1,18 @@
-@import "~react-image-gallery/styles/scss/image-gallery.scss";
-
+@import '~react-image-gallery/styles/scss/image-gallery.scss';
 
 .single-product {
   border-radius: 8px;
   font-size: 12px;
   line-height: 18px;
   position: relative;
-  height:411px;
+  height: 411px;
 
   &:hover {
     border: 1px solid var(--gray-secondary);
 
     .image-container {
       border: none;
-      overflow:hidden;
+      overflow: hidden;
       img {
         transform: scale(1.05);
       }
@@ -36,7 +35,7 @@
       width: 100%;
       object-fit: contain;
       display: block;
-      height:276px;
+      height: 276px;
       transition: transform 0.3s ease-in;
     }
   }
@@ -90,7 +89,7 @@
     display: none;
     padding: 12px;
     position: absolute;
-    bottom:0px;
+    bottom: 0px;
     left: 0;
     width: 100%;
     animation: animatebtn 1s;
@@ -99,7 +98,7 @@
 
 @media (max-width: 512px) {
   .single-product {
-    height:auto;
+    height: auto;
     .product-cart-btn {
       position: relative;
     }

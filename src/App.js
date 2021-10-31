@@ -1,10 +1,9 @@
-import './App.scss';
 import Header from './components/Header/Header';
 import Listing from './components/Listing';
 import Backdrop from './components/UI/Backdrop/Backdrop';
+import Modal from './components/UI/Modal/Modal';
 
 import { Route } from 'react-router-dom';
-import Modal from './components/UI/Modal/Modal';
 
 function App() {
   return (

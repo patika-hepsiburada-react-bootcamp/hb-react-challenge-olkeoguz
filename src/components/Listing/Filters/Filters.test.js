@@ -1,6 +1,8 @@
-import { render, fireEvent,screen } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
+
 import ProductContext from '../../../contexts/ProductContext';
 import FiltersContext from '../../../contexts/FiltersContext';
+
 import Filters from './Filters';
 import Filter from './Filter/Filter';
 import Sorting from './Sorting/Sorting';

@@ -27,19 +27,18 @@ describe('header component', () => {
   it('should be rendered', () => {
     const component = render(
       <Router>
-      <CartContext.Provider value={{ cartItems }}>
-        <FiltersContext.Provider
-          value={{
-            filters,
-            setFilters,
-          }}
-        >
-          <Header />
-        </FiltersContext.Provider>
-      </CartContext.Provider>
+        <CartContext.Provider value={{ cartItems }}>
+          <FiltersContext.Provider
+            value={{
+              filters,
+              setFilters,
+            }}
+          >
+            <Header />
+          </FiltersContext.Provider>
+        </CartContext.Provider>
       </Router>
     );
-
 
     expect(component).toBeTruthy();
   });
@@ -47,16 +46,16 @@ describe('header component', () => {
   it('should have the input ', () => {
     const component = render(
       <Router>
-      <CartContext.Provider value={{ cartItems }}>
-        <FiltersContext.Provider
-          value={{
-            filters,
-            setFilters,
-          }}
-        >
-          <Header />
-        </FiltersContext.Provider>
-      </CartContext.Provider>
+        <CartContext.Provider value={{ cartItems }}>
+          <FiltersContext.Provider
+            value={{
+              filters,
+              setFilters,
+            }}
+          >
+            <Header />
+          </FiltersContext.Provider>
+        </CartContext.Provider>
       </Router>
     );
 
@@ -64,5 +63,4 @@ describe('header component', () => {
 
     expect(input).toBeTruthy();
   });
-
 });

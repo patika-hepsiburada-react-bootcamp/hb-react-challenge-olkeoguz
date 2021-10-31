@@ -30,7 +30,8 @@ const Products = ({ scrollToProductsRef }) => {
     return (
       <div className='products-main'>
         <h3 data-testid='fetch-products-error'>
-          Geçici olarak ürünleri listeleyemiyoruz.Lütfen daha sonra tekrar deneyin...
+          Geçici olarak ürünleri listeleyemiyoruz.Lütfen daha sonra tekrar
+          deneyin...
         </h3>
       </div>
     );
@@ -48,7 +49,7 @@ const Products = ({ scrollToProductsRef }) => {
       <div className='products-container' data-testid='listing-products'>
         {loading && [...Array(12)].map((_, index) => <Loading key={index} />)}
         {currentResults.map((prod) => (
-          <SingleProduct key={prod.id} product={prod} id="singleprod" />
+          <SingleProduct key={prod.id} product={prod} id='singleprod' />
         ))}
       </div>
       <Pagination

@@ -1,10 +1,11 @@
-import React from 'react';
-import Button from '../../UI/Button/Button';
-import ArrowDown from '../../../assets/icons/ArrowDown.svg';
-import './Bar.scss';
 import { useFilters } from '../../../contexts/FiltersContext';
 import { sortingOptions } from '../Filters/Sorting/Sorting';
+
+import Button from '../../UI/Button/Button';
 import Done from '../../../assets/icons/Done.svg';
+import ArrowDown from '../../../assets/icons/ArrowDown.svg';
+
+import './Bar.scss';
 
 const Bar = () => {
   const { filters, setFilters } = useFilters();
