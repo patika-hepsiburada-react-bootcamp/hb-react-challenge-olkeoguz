@@ -18,8 +18,7 @@ export const ProductContextProvider = ({ children }) => {
 
   const { filters } = useFilters();
 
-  // let baseURL = `https://quiet-thicket-51521.herokuapp.com/products?`;
-  let baseURL = `http://localhost/products?`;
+  let baseURL = `https://quiet-thicket-51521.herokuapp.com/products?`;
 
   const color = filters.color.length > 0 ? `color=${filters.color}` : '';
   const brand = filters.brand.length > 0 ? `brand=${filters.brand}` : '';
