@@ -11,8 +11,7 @@ export const CartContextProvider = ({ children }) => {
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
-    if (!cartItems) return;
-    else setCartItems(storedCartItems);
+    storedCartItems ? setCartItems(storedCartItems) : [];
   }, []);
 
   useEffect(() => {

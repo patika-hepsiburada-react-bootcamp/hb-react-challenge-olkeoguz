@@ -75,7 +75,7 @@ const Header = () => {
       </div>
       <div className='cart-container' data-testid='basket'>
         <Button text='Sepetim' />
-        <span className='quantity'>{cartItems?.length}</span>
+        <span className='quantity'>{cartItems? cartItems.length : 0}</span>
         <div className='white-line'></div>
         <div className='cart' data-testid='cart'>
           <Cart />
