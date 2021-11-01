@@ -22,7 +22,7 @@ const SingleProduct = ({ product }) => {
   };
 
   const itemIsInCart = useMemo(
-    () => cartItems.some((item) => item.id === product.id),
+    () => cartItems?.some((item) => item.id === product.id),
     [cartItems]
   );
   return (

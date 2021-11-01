@@ -6,7 +6,7 @@ import './Cart.scss';
 const Cart = () => {
   const { cartItems, removeFromCart } = useCart();
 
-  if (!cartItems.length) {
+  if (!cartItems) {
     return (
       <div className='cart-items-container' data-testid='empty-basket'>
         Henüz sepetiniz boş...
